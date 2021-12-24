@@ -21,7 +21,7 @@ GPU NVIDIA Tesla V100-SMX2
 
 
 ## Dataset 
-Please refer to [RCDNet, CVPR2020](https://github.com/hongwang01/RCDNet) for downloading these datasets and put them into the corresponding folders according to the folder dictionary in [VRGNet, CVPR2021](https://github.com/hongwang01/VRGNet)
+Please refer to [RCDNet, CVPR2020](https://github.com/hongwang01/RCDNet) for downloading datasets and put them into the corresponding folders according to the folder dictionary in [VRGNet, CVPR2021](https://github.com/hongwang01/VRGNet)
 
 
 ## Citation
