@@ -4,7 +4,7 @@
 
 *The extension of this work is released as [DRCDNet](https://github.com/hongwang01/DRCDNet) where we propose a dynamic rain kernel inference mechanism.
 
-*This is a simple coding framework
+*This is a simple coding framework, which has better compatibility with running environments. The original coding framework for RCDNet CVPR2020 is released at https://github.com/hongwang01/RCDNet
 
 
 ## Dependicies
