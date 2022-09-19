@@ -89,8 +89,8 @@ def train_model(net, optimizer, lr_scheduler,datasets):
             loss_Bs = 0
             loss_Rs = 0
             for j in range(opt.S):
-                loss_Bs = float(loss_Bs) + 0.1 * F.mse_loss(ListB[j], im_gt)
-                loss_Rs = float(loss_Rs) + 0.1 * F.mse_loss(ListR[j], im_rain - im_gt)
+                loss_Bs = loss_Bs + 0.1 * F.mse_loss(ListB[j], im_gt)                            # 2022-09-19 fix the bug
+                loss_Rs = loss_Rs + 0.1 * F.mse_loss(ListR[j], im_rain - im_gt)                  # 2022-09-19 fix the bug
             lossB = F.mse_loss(ListB[-1], im_gt)
             lossR = 0.9 *F.mse_loss(ListR[-1], im_rain - im_gt)
             lossB0 = 0.1 *F.mse_loss(B0, im_gt)
