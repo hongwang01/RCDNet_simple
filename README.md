@@ -65,6 +65,8 @@ SPA-Data   |41.47/0.9834|41.52/0.9849
 
 Please note that for the simplified framework, we currently have only experimental result records and pretrained models on Rain100L and Rain100H on hand.  Sorry for the inconvenience.  Currently, all the available resource can be downloaded from [NetDisk](https://pan.baidu.com/s/1VHI-ZsLZybdbZp5TIUAcnw?pwd=rcds)(rcds)
 
+## To Do List
+Release pretrained models on Rain1400 and SPA-Data
 
 ## Citation
 ```
