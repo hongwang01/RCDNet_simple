@@ -20,8 +20,6 @@ parser.add_argument("--use_GPU", type=bool, default=True, help='use GPU or not')
 parser.add_argument("--gpu_id", type=str, default="0", help='GPU id')
 parser.add_argument("--save_path", type=str, default="./derained/syn100l", help='path to derained results')
 opt = parser.parse_args()
-
-
 try:
     os.makedirs(opt.save_path)
 except OSError:
@@ -29,11 +27,7 @@ except OSError:
 
 if opt.use_GPU:
     os.environ["CUDA_VISIBLE_DEVICES"] = opt.gpu_id
-def print_network(net):
-    num_params = 0
-    for param in net.parameters():
-        num_params += param.numel()
-    print('Total number of parameters: %d' % num_params)
+
 
 def main():
     # Build model

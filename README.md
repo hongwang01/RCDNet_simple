@@ -20,8 +20,50 @@ CUDA 10.1
 GPU NVIDIA Tesla V100-SMX2
 
 
-## Dataset 
-Please refer to [RCDNet, CVPR2020](https://github.com/hongwang01/RCDNet) for downloading datasets and put them into the corresponding folders according to the folder dictionary in [VRGNet, CVPR2021](https://github.com/hongwang01/VRGNet)
+## Dataset
+
+Download Rain100L (training data: train/small/, testing data: test/small), Rain100H (training data: train/small/, testing data: test/small), Rain1400 (training data: train/small/, testing data: test/small), SPA-Data (testing data: test/small) from the  [[NetDisk]](https://pan.baidu.com/s/1yV4ih7C4Xg0iazqSBB-U1Q) (pwd:uz8h) and put them into the folder "data" as:
+
+```
+data/syndata/Rain100L/train/small/rain
+data/syndata/Rain100L/train/small/norain
+data/syndata/Rain100H/train/small/rain
+data/syndata/Rain100H/train/small/norain
+data/syndata/Rain1400/train/small/rain
+data/syndata/Rain1400/train/small/norain
+data/spa-data/real_world"
+data/spa-data/real_world_gt"
+data/spa-data/real_world.txt"
+data/spa-data/test/small/rain
+data/spa-data/test/small/norain
+```
+
+## Training
+
+1. Training on SynData
+
+```
+python train_main_syn.py --data_path data/syndata/Rain100L/small/rain --gt_path data/syndata/Rain100L/small/norain --log_dir synlogs --model_dir synmodels --gpu_id 0
+```
+
+2. Training on SPA-Data
+
+```
+python train_main_real.py --data_path data/spa-data/ --log_dir spalogs --model_dir spamodels --gpu_id 0
+```
+
+## Pretrained_Model and Derained_Results
+
+Average PSNR/SSIM values on four datasets:
+
+Dataset    | [RCDNet(CVPR2020)](https://github.com/hongwang01/RCDNet) |RCDNet_simplified    
+-----------|-----------|-----------
+Rain100L   |40.00/0.9860|39.73/0.9856
+Rain100H   |31.28/0.9093|31.32/0.9095
+Rain1400   |33.04/0.9472|33.09/0.9491
+SPA-Data   |41.47/0.9834|41.52/0.9849
+
+Please note that for the simplified framework, we currently have only experimental result records and pretrained models on Rain100L and Rain100H on hand.  Sorry for the inconvenience.  Currently, all the available resource can be downloaded from [NetDisk](链接：https://pan.baidu.com/s/1VHI-ZsLZybdbZp5TIUAcnw?pwd=rcds)(rcds)
 
 
 ## Citation
@@ -36,4 +78,4 @@ year = {2020}
 ```
 
 ## Contact
-If you have any question, please feel free to concat Hong Wang (Email: hongwang01@stu.xjtu.edu.cn)
+If you have any question, please feel free to concat Hong Wang (Email: hongwang9209@hotmail.com)

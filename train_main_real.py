@@ -18,17 +18,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tensorboardX import SummaryWriter
 from torch.optim.lr_scheduler import MultiStepLR
-from utils import findLastCheckpoint, batch_PSNR
 from rcdnet import RCDNet
 from torch.utils.data import DataLoader
-from DerainDataset  import SPATrainDataset, ValDataset
+from DerainDataset  import SPATrainDataset
 from math import ceil
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--data_path",type=str, default="./spa-data/train/",help='txt path to training spa-data')
+parser.add_argument("--data_path",type=str, default="./data/spa-data/",help='txt path to training spa-data')
 parser.add_argument('--workers', type=int, help='number of data loading workers', default=4)
 parser.add_argument('--batchSize', type=int, default=16, help='input batch size')
 parser.add_argument('--patchSize', type=int, default=64, help='the height / width of the input image to network')
+parser.add_argument('--batchnum', type=int, default=1500, help='the number of batch at every epoch, need to be adjusted according to the total number of training samples')
 parser.add_argument('--niter', type=int, default=100, help='total number of training epochs')
 parser.add_argument('--num_M', type=int, default=32, help='the number of rain maps')
 parser.add_argument('--num_Z', type=int, default=32, help='the number of dual channels')
@@ -140,7 +140,7 @@ if __name__ == '__main__':
 
     # load dataset
     spa_files = open(os.path.join(opt.data_path,'real_world.txt'), 'r').readlines()
-    train_dataset = SPATrainDataset(opt.data_path, spa_files, opt.patchSize, opt.batchSize * 1500, len(spa_files))
+    train_dataset = SPATrainDataset(opt.data_path, spa_files, opt.patchSize, int(opt.batchSize * 5000), len(spa_files))
     # train model
     train_model(netDerain, optimizerDerain, schedulerDerain, train_dataset)
 

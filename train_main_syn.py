@@ -18,18 +18,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tensorboardX import SummaryWriter
 from torch.optim.lr_scheduler import MultiStepLR
-from utils import findLastCheckpoint, batch_PSNR
 from rcdnet import RCDNet
 from torch.utils.data import DataLoader
 from DerainDataset import TrainDataset
 from math import ceil
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--data_path",type=str, default="./rain100L/train/small/rain",help='path to training input data')
-parser.add_argument("--gt_path",type=str, default="./rain100L/train/small/norain",help='path to training gt data')
+parser.add_argument("--data_path",type=str, default="./data/syndata/rain100L/train/small/rain",help='path to training input data')
+parser.add_argument("--gt_path",type=str, default="./data/syndata/rain100L/train/small/norain",help='path to training gt data')
 parser.add_argument('--workers', type=int, help='number of data loading workers', default=4)
 parser.add_argument('--batchSize', type=int, default=16, help='input batch size')
 parser.add_argument('--patchSize', type=int, default=64, help='the height / width of the input image to network')
+parser.add_argument('--batchnum', type=int, default=1500, help='the number of batch at every epoch, need to be adjusted according to the total number of training samples')
 parser.add_argument('--niter', type=int, default=100, help='total number of training epochs')
 parser.add_argument('--num_M', type=int, default=32, help='the number of rain maps')
 parser.add_argument('--num_Z', type=int, default=32, help='the number of dual channels')
@@ -40,8 +40,8 @@ parser.add_argument("--milestone", type=int, default=[25,50,75], help="When to d
 parser.add_argument('--lr', type=float, default=0.001, help='initial learning rate')
 parser.add_argument("--use_gpu", type=bool, default=True, help='use GPU or not')
 parser.add_argument("--gpu_id", type=str, default="0", help='GPU id')
-parser.add_argument('--log_dir', default='./spa_logs/', help='tensorboard logs')
-parser.add_argument('--model_dir',default='./spa_models/',help='saving model')
+parser.add_argument('--log_dir', default='./logs/', help='tensorboard logs')
+parser.add_argument('--model_dir',default='./models/',help='saving model')
 parser.add_argument('--manualSeed', type=int, help='manual seed')
 opt = parser.parse_args()
 
@@ -140,7 +140,7 @@ if __name__ == '__main__':
         print('loaded checkpoints, epoch{:d}'.format(checkpoint['epoch']))
 
     # load dataset
-    train_dataset = TrainDataset(opt.data_path, opt.gt_path, opt.patchSize, opt.batchSize * 1500)
+    train_dataset = TrainDataset(opt.data_path, opt.gt_path, opt.patchSize, int(opt.batchSize * opt.batchnum))
     # train model
     train_model(netDerain, optimizerDerain, schedulerDerain, train_dataset)
 
