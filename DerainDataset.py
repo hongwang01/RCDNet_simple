@@ -93,7 +93,7 @@ class SPATrainDataset(udata.Dataset):
         B = gt_img[row: row + self.patch_size, col : col + self.patch_size]
 
 
-        O, B = self.augment(O, B)
+
         O = O.astype(np.float32)
         O = np.transpose(O, (2, 0, 1))
         B = B.astype(np.float32)
@@ -110,8 +110,4 @@ class SPATrainDataset(udata.Dataset):
         c = self.rand_state.randint(0, w - p_w)
         O = img[r: r + p_h, c : c + p_w]
         return O,r,c
-    def augment(self, O, B):
-        if random.random() < 0.5:
-            O = O[:,::-1,:]
-            B = B[:, ::-1, :]
-        return O,B
+
