@@ -63,7 +63,7 @@ Rain100H   |31.28/0.9093|31.32/0.9095
 Rain1400   |33.04/0.9472|33.09/0.9491
 SPA-Data   |41.47/0.9834|41.52/0.9849
 
-Please note that for the simplified framework, we currently have only experimental result records and pretrained models on Rain100L and Rain100H on hand.  Sorry for the inconvenience.  Currently, all the available resource can be downloaded from [NetDisk](链接：https://pan.baidu.com/s/1VHI-ZsLZybdbZp5TIUAcnw?pwd=rcds)(rcds)
+Please note that for the simplified framework, we currently have only experimental result records and pretrained models on Rain100L and Rain100H on hand.  Sorry for the inconvenience.  Currently, all the available resource can be downloaded from [NetDisk](https://pan.baidu.com/s/1VHI-ZsLZybdbZp5TIUAcnw?pwd=rcds)(rcds)
 
 
 ## Citation
